@@ -13,33 +13,42 @@ const Cell = defineStyleConfig({
     baseStyle: {
         w: 'full',
         h: 'full',
-        position: 'relative',
+        overflow: 'hidden',
+        position: 'absolute',
         display: 'flex',
         flexDirection: 'column',
-        overflow: 'hidden',
-    }
+        backgroundColor: 'white',
+        transition: 'all .15s ease-in-out',
+        '&::-webkit-scrollbar': { display: 'none' },
+    },
+
+    variants: {
+        popup: {
+            w: '300%',
+            h: '300%',
+            overflow: 'scroll',
+            boxShadow: '0px 5px 20px -2px #00000033',
+            zIndex: '100',
+            transform: 'translate(-7rem, -7rem)',
+        },
+
+        celled: {
+            w: '100%',
+            h: '100%',
+            overflow: 'hidden',
+            boxShadow: 'none',
+            zIndex: '0',
+        }
+    },
 });
 
 const theme = extendTheme({
-    colors: {
-        brand: {
-            50: "#e2f5ff",
-            100: "#b6e0ff",
-            200: "#88c7ff",
-            300: "#5aaeff",
-            400: "#2c94ff",
-            500: "#007aff",
-            600: "#0062cc",
-            700: "#004a99",
-            800: "#003266",
-            900: "#001a33",
-        },
-    },
 
     components: {
         Text: {...dateTextStyle},
         Cell,
     }
+
 });
 
 export default theme;
