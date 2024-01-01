@@ -1,4 +1,3 @@
-import { GridItem } from "@chakra-ui/react";
 import Cell from "./Cell";
 
 function TodayCell ({ cell, setSelectedDate }) {
@@ -6,6 +5,7 @@ function TodayCell ({ cell, setSelectedDate }) {
         <Cell
             bg='blue.400'
             borderRadius='50%'
+            display='flex'
             alignItems='center'
             justifyContent='center'
             color='white'

@@ -15,8 +15,6 @@ const Cell = defineStyleConfig({
         h: 'full',
         overflow: 'hidden',
         position: 'absolute',
-        display: 'flex',
-        flexDirection: 'column',
         backgroundColor: 'white',
         transition: 'all .15s ease-in-out',
         '&::-webkit-scrollbar': { display: 'none' },
@@ -31,7 +29,7 @@ const Cell = defineStyleConfig({
             zIndex: '100',
             transform: 'translate(-7rem, -7rem)',
         },
-
+        
         celled: {
             w: '100%',
             h: '100%',

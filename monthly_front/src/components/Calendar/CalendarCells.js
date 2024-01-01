@@ -36,7 +36,7 @@ function CalendarCells ({ currentMonth, selectedDate, setSelectedDate, contents 
             return <SpaceCell key={index}/>;
         else if (isSameDay(cell.day, new Date(2023, 11, 28)))
             return <TodayCell key={index} cell={cell} setSelectedDate={setSelectedDate}/>;
-        else if (cell.content.type === 'null')
+        else if (cell.content === null)
             return <NullCell key={index} cell={cell}/>;
         else
             return <ContentCell key={index} cell={cell} setSelectedDate={setSelectedDate}/>;

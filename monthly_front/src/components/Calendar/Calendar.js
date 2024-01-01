@@ -7,6 +7,7 @@ import dummyContents from './dummyContents.js';
 function Calendar () {
     const [currentMonth, setCurrentMonth] = useState(new Date(2023, 11, 25));
     const [selectedDate, setSelectedDate] = useState(new Date(2023, 11, 25));
+    
 
     return (
         <Box w='49rem'>
@@ -14,7 +15,7 @@ function Calendar () {
                 currentMonth={currentMonth}
                 selectedDate={selectedDate}
                 setSelectedDate={setCurrentMonth}
-                contents={dummyContents.map(s => s.body === '' ? { type: 'null', body: null } : s)}
+                contents={dummyContents}
             />
         </Box>
     );
