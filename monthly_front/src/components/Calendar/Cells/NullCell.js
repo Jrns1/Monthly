@@ -1,8 +1,13 @@
-import { GridItem } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
+import Cell from "./Cell";
 
-const NullCell = () => {
+function NullCell ({ cell, setSelectedDate }) {
     return (
-        <GridItem w='100%' />
+        <Cell>
+            <Text variant='date' color='gray.200'> 
+                {cell.day.getDate()} 
+            </Text>
+        </Cell>
     );
 }
 

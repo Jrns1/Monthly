@@ -1,10 +1,12 @@
 import { GridItem } from "@chakra-ui/react";
+import Cell from "./Cell";
 
-const Today = ({ cell }) => {
+function TodayCell ({ cell, setSelectedDate }) {
     return (
-        <GridItem
-            w='100%'
-            h='100%'
+        <Cell
+            w='200%'
+            h='200%'
+            
             bg='blue.400'
             borderRadius='50%'
             display='flex'
@@ -14,8 +16,8 @@ const Today = ({ cell }) => {
             fontWeight='bold'
         >
             {cell.day.getDate()}
-        </GridItem>
+        </Cell>
     );
 }
 
-export default Today;
+export default TodayCell;

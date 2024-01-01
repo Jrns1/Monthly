@@ -1,14 +1,17 @@
-import { startOfMonth, endOfMonth, startOfWeek, endOfWeek, isSameMonth, isSameDay, addDays } from 'date-fns';
-import { useEffect, useState } from 'react';
-import Cell from './Cells/Cell';
-import NullCell from './Cells/NullCell';
-import Today from './Cells/Today';
+import { startOfMonth, endOfMonth, startOfWeek, isSameMonth, isSameDay, addDays } from 'date-fns';
 import { Grid } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import ContentCell from './Cells/ContentCell';
+import NullCell from './Cells/NullCell';
+import SpaceCell from './Cells/SpaceCell';
+import TodayCell from './Cells/TodayCell';
 
-const CalendarCells = ({ currentMonth, selectedDate, setSelectedDate, contents }) => {
+function CalendarCells ({ currentMonth, selectedDate, setSelectedDate, contents }) {
+
     const [calendarCells, setCalendarCells] = useState([]);
+    useEffect(instantiateCells, [currentMonth, selectedDate]);
 
-    useEffect(() => {
+    function instantiateCells () {
         const firstDayOfMonth = startOfMonth(currentMonth);
         const lastDayOfMonth = endOfMonth(firstDayOfMonth);
         const startDate = startOfWeek(firstDayOfMonth);
@@ -26,21 +29,21 @@ const CalendarCells = ({ currentMonth, selectedDate, setSelectedDate, contents }
         }
     
         setCalendarCells(cells);
-    }, [currentMonth, selectedDate]);
+    }
 
     const instantiate = (cell, index) => {
         if (!isSameMonth(cell.day, currentMonth))
-            return <NullCell key={index}/>;
-        else if (isSameDay(cell.day, new Date()))
-            return <Today key={index} cell={cell} setSelectedDate={selectedDate}/>;
-        else if (cell.content === null)
-            return <NullCell key={index}/>;
+            return <SpaceCell key={index}/>;
+        else if (isSameDay(cell.day, new Date(2023, 11, 28)))
+            return <TodayCell key={index} cell={cell} setSelectedDate={setSelectedDate}/>;
+        else if (cell.content.type === 'null')
+            return <NullCell key={index} cell={cell}/>;
         else
-            return <Cell key={index} cell={cell} setSelectedDate={setSelectedDate}/>;
+            return <ContentCell key={index} cell={cell} setSelectedDate={setSelectedDate}/>;
     }
 
     return (
-        <Grid h='95vh' aspectRatio='auto 7/6' templateColumns='repeat(7, 1fr)'>
+        <Grid w='full' aspectRatio='auto 7/6' templateColumns='repeat(7, 1fr)' templateRows='repeat(6, 1fr)'>
             {calendarCells.map(instantiate)}
         </Grid>
     );

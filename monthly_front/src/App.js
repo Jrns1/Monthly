@@ -1,26 +1,19 @@
 import React from 'react';
 import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
+  
   Flex,
-  HStack,
   Spacer,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
 import Calendar from './components/Calendar/Calendar';
 import Panel from './components/Layout/Panel';
+
+import theme from './theme/theme';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Flex w='100%' p='2vh 3rem'>
+      <Flex w='full' p='2rem 2rem'>
         <Panel/>
         <Spacer />
         <Calendar />

@@ -4,17 +4,17 @@ import { Box } from '@chakra-ui/react';
 import dummyContents from './dummyContents.js';
 
 
-const Calendar = () => {
-    const [currentMonth, setCurrentMonth] = useState(new Date());
-    const [selectedDate, setSelectedDate] = useState(new Date());
+function Calendar () {
+    const [currentMonth, setCurrentMonth] = useState(new Date(2023, 11, 25));
+    const [selectedDate, setSelectedDate] = useState(new Date(2023, 11, 25));
 
     return (
-        <Box>
+        <Box w='49rem'>
             <CalendarCells
                 currentMonth={currentMonth}
                 selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
-                contents={dummyContents.map(s => s.body === '' ? { type: 'null', content: null } : s)}
+                setSelectedDate={setCurrentMonth}
+                contents={dummyContents.map(s => s.body === '' ? { type: 'null', body: null } : s)}
             />
         </Box>
     );
