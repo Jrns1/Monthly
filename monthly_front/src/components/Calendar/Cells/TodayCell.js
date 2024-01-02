@@ -1,8 +1,10 @@
-import Cell from "./Cell";
+import { Box } from "@chakra-ui/react";
 
-function TodayCell ({ cell, setSelectedDate }) {
+function TodayCell ({ cell }) {
     return (
-        <Cell
+        <Box
+            w='full'
+            h='full'
             bg='blue.400'
             borderRadius='50%'
             display='flex'
@@ -12,7 +14,7 @@ function TodayCell ({ cell, setSelectedDate }) {
             fontWeight='bold'
         >
             {cell.day.getDate()}
-        </Cell>
+        </Box>
     );
 }
 

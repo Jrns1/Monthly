@@ -1,15 +1,12 @@
 import { startOfMonth, endOfMonth, startOfWeek, isSameMonth, isSameDay, addDays } from 'date-fns';
-import { Grid } from '@chakra-ui/react';
+import { Grid, GridItem } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import ContentCell from './Cells/ContentCell';
-import NullCell from './Cells/NullCell';
-import SpaceCell from './Cells/SpaceCell';
-import TodayCell from './Cells/TodayCell';
+import PopableCell from './Cells/PopableCell';
 
 function CalendarCells ({ currentMonth, selectedDate, setSelectedDate, contents }) {
 
     const [calendarCells, setCalendarCells] = useState([]);
-    useEffect(instantiateCells, [currentMonth, selectedDate]);
+    useEffect(instantiateCells, [currentMonth, selectedDate, contents]);
 
     function instantiateCells () {
         const firstDayOfMonth = startOfMonth(currentMonth);
@@ -19,10 +16,9 @@ function CalendarCells ({ currentMonth, selectedDate, setSelectedDate, contents 
         const cells = [];
         let day = startDate;
         while (day <= lastDayOfMonth) {
-            const content = contents[day.getDate() - 1];
             cells.push({
                 day,
-                content,
+                content: contents[day.getDate() - 1],
                 isSelected: isSameDay(day, selectedDate),
             });
             day = addDays(day, 1);
@@ -33,13 +29,9 @@ function CalendarCells ({ currentMonth, selectedDate, setSelectedDate, contents 
 
     const instantiate = (cell, index) => {
         if (!isSameMonth(cell.day, currentMonth))
-            return <SpaceCell key={index}/>;
-        else if (isSameDay(cell.day, new Date(2023, 11, 28)))
-            return <TodayCell key={index} cell={cell} setSelectedDate={setSelectedDate}/>;
-        else if (cell.content === null)
-            return <NullCell key={index} cell={cell}/>;
+            return <GridItem key={index} />;
         else
-            return <ContentCell key={index} cell={cell} setSelectedDate={setSelectedDate}/>;
+            return <PopableCell key={index} cell={cell} />;
     }
 
     return (

@@ -1,19 +1,7 @@
 import { Image, Heading, Text, Spacer, Flex, Box } from "@chakra-ui/react";
-import Cell from "./Cell";
-import { useState, useRef } from "react";
-
-
 
 const ContentCell = ({ cell }) => {
     const { day, content } = cell;
-
-    const [isHovered, setIsHovered] = useState(false);
-    const popupRef = useRef(null);
-
-    const handleMouseLeave = () => {
-        popupRef.current.scrollTop = 0;
-        setIsHovered(false);
-    }
 
     let dateStyle = {};
     let contentComponent = null;
@@ -36,12 +24,7 @@ const ContentCell = ({ cell }) => {
     }
 
     return (
-        <Cell 
-        variant={isHovered ? 'popup' : 'celled'}
-        onMouseEnter={() => {setIsHovered(true)}}
-        onMouseLeave={handleMouseLeave}
-        ref={popupRef}>
-
+        <>
             <Flex w='full' aspectRatio='auto 1/1' flexDir='column'>
                 <Text variant='date' style={dateStyle}> {day.getDate()} </Text>
                 <Spacer />
@@ -52,7 +35,7 @@ const ContentCell = ({ cell }) => {
 
             <Box fontSize='xs' m='3rem 2rem' dangerouslySetInnerHTML={{ __html: content.body }} />
 
-        </Cell>
+        </>
     );
 }
 
