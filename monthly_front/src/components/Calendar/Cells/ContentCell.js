@@ -1,7 +1,10 @@
 import { Image, Heading, Text, Spacer, Flex, Box } from "@chakra-ui/react";
+import { useState } from "react";
+import ScrollablePopup from "./ScrollablePopup";
 
 const ContentCell = ({ cell }) => {
     const { day, content } = cell;
+    const [isHovered, setIsHovered] = useState(false);
 
     let dateStyle = {};
     let contentComponent = null;
@@ -24,7 +27,11 @@ const ContentCell = ({ cell }) => {
     }
 
     return (
-        <>
+        <ScrollablePopup
+        popup={isHovered}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}>
+
             <Flex w='full' aspectRatio='auto 1/1' flexDir='column'>
                 <Text variant='date' style={dateStyle}> {day.getDate()} </Text>
                 <Spacer />
@@ -35,7 +42,7 @@ const ContentCell = ({ cell }) => {
 
             <Box fontSize='xs' m='3rem 2rem' dangerouslySetInnerHTML={{ __html: content.body }} />
 
-        </>
+        </ScrollablePopup>
     );
 }
 

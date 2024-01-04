@@ -76,9 +76,6 @@ const ScrollablePopup = defineStyleConfig({
 });
 
 
-
-
-
 const theme = extendTheme({
 
     components: {

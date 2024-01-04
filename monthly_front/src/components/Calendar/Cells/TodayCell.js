@@ -1,10 +1,8 @@
-import { Box } from "@chakra-ui/react";
+import ScorllablePopup from "./ScrollablePopup";
 
 function TodayCell ({ cell }) {
     return (
-        <Box
-            w='full'
-            h='full'
+        <ScorllablePopup
             bg='blue.400'
             borderRadius='50%'
             display='flex'
@@ -14,7 +12,7 @@ function TodayCell ({ cell }) {
             fontWeight='bold'
         >
             {cell.day.getDate()}
-        </Box>
+        </ScorllablePopup>
     );
 }
 

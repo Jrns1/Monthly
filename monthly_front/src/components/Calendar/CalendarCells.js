@@ -1,7 +1,7 @@
 import { startOfMonth, endOfMonth, startOfWeek, isSameMonth, isSameDay, addDays } from 'date-fns';
 import { Grid, GridItem } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import PopableCell from './Cells/PopableCell';
+import Cell from './Cells/Cell';
 
 function CalendarCells ({ currentMonth, selectedDate, setSelectedDate, contents }) {
 
@@ -31,7 +31,7 @@ function CalendarCells ({ currentMonth, selectedDate, setSelectedDate, contents 
         if (!isSameMonth(cell.day, currentMonth))
             return <GridItem key={index} />;
         else
-            return <PopableCell key={index} cell={cell} />;
+            return <Cell key={index} cell={cell} />;
     }
 
     return (
