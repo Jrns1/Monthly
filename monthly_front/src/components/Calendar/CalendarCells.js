@@ -31,7 +31,7 @@ function CalendarCells ({ currentMonth, selectedDate, setSelectedDate, contents 
         if (!isSameMonth(cell.day, currentMonth))
             return <GridItem key={index} />;
         else
-            return <Cell key={index} cell={cell} />;
+            return <Cell key={index} cell={cell} selectedDate={selectedDate} setSelectedDate={setSelectedDate} />;
     }
 
     return (

@@ -1,6 +1,6 @@
 import ScorllablePopup from "./ScrollablePopup";
 
-function TodayCell ({ cell }) {
+function TodayCell ({ cell, selectedDate, setSelectedDate }) {
     return (
         <ScorllablePopup
             bg='blue.400'

@@ -9,38 +9,6 @@ const dateTextStyle = {
     }
 };
 
-// const ScrollablePopup = defineStyleConfig({
-//     baseStyle: {
-//         w: 'full',
-//         h: 'full',
-//         overflow: 'hidden',
-//         position: 'absolute',
-//         backgroundColor: 'white',
-//         transition: 'all .15s ease-in-out',
-//         '&::-webkit-scrollbar': { display: 'none' },
-//     },
-
-//     variants: {
-//         popup: {
-//             w: '21rem',
-//             h: '21rem',
-//             overflow: 'scroll',
-//             boxShadow: '0px 5px 20px -2px #00000033',
-//             zIndex: '100',
-//             transform: 'translate(-7rem, -7rem)',
-//         },
-
-//         celled: {
-//             w: '7rem',
-//             h: '7rem',
-//             overflow: 'hidden',
-//             boxShadow: 'none',
-//             zIndex: '0',
-//         }
-//     },
-// });
-
-
 
 const ScrollablePopup = defineStyleConfig({
   baseStyle: {

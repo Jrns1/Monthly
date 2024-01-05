@@ -2,7 +2,7 @@ import { Image, Heading, Text, Spacer, Flex, Box } from "@chakra-ui/react";
 import { useState } from "react";
 import ScrollablePopup from "./ScrollablePopup";
 
-const ContentCell = ({ cell }) => {
+const ContentCell = ({ cell, selectedDate, setSelectedDate }) => {
     const { day, content } = cell;
     const [isHovered, setIsHovered] = useState(false);
 
@@ -28,7 +28,7 @@ const ContentCell = ({ cell }) => {
 
     return (
         <ScrollablePopup
-        popup={isHovered}
+        popup={isHovered && !selectedDate}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}>
 
